@@ -1,0 +1,1 @@
+# Spark on Kubernetes with MinIO as object storage
