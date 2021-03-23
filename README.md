@@ -3,6 +3,13 @@
 Spark-MinIO-K8s is a project for implementation of Spark on Kubernetes with MinIO as object storage, using docker, minicube, kubectl, helm, kubefwd and spark operator.
 
 
+
+# How to run
+
+    kubectl apply -f k8s.yml
+
+
+
 # Installation guide:
 
 Install minicube:
@@ -71,6 +78,20 @@ Add MinIO jar file dependencies:
 
     wget https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/3.2.0/hadoop-aws-3.2.0.jar \
     -P /usr/local/spark/jars/
+
+
+Make sparkjob Image:
+
+    cd /usr/local/spark
+    ./bin/docker-image-tool.sh -r spark-base -t 1.0.0 -p ./kubernetes/dockerfiles/spark/bindings/python/Dockerfile build
+
+    cd ./container
+    docker build -t sparkjob:1.0 .
+
+
+Push sparkjob Image:
+
+    docker push shabmus/sparkjob:1.0
 
 
 Install Spark Operator:
