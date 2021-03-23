@@ -29,6 +29,7 @@ Install helm:
 
 Install MinIO on Kubernetes:
 
+    helm repo add minio https://helm.min.io/
     helm install minio --set accessKey=myaccesskey,secretKey=mysecretkey minio/minio
 
     kubectl get pods
@@ -40,3 +41,11 @@ Install kubefwd:
 
     # download and install kubefwd from https://github.com/txn2/kubefwd/releases
     sudo -E kubefwd svc
+
+
+Install Spark Operator:
+
+    helm repo add spark-operator https://googlecloudplatform.github.io/spark-on-k8s-operator
+    helm install sparkoperator spark-operator/spark-operator
+
+    kubectl get pods
